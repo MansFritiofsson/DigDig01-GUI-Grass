@@ -16,6 +16,9 @@ public class ButtonScript : MonoBehaviour
     public GameObject healthbar; // Global variabel för GUI-healthbaren, värdet sätts i Unity
     Slider slider; // Värde för Slider-komponenten av healthbaren, värdet sätts i Start()-metoden
 
+    public GameObject fireParticles; // Global variabel för objektet som innehåller ett particle-systems för eld- och vattenpartiklar som aktiveras när DMG och HEAL knappen trycks ned
+    public GameObject waterParticles;
+
     void Start() // Körs när spelet startar
     {
         // Uppdaterar variablerna som deklarerades tidigare och hämtar komponenterna
@@ -34,6 +37,7 @@ public class ButtonScript : MonoBehaviour
     public void TakeDamage() // Metod som körs när DMG-knappen trycks ned
     {
         enemyS.health -= damageAmount; // Minskar fiendens health
+        fireParticles.GetComponent<ParticleSystem>().Play(); // Startar eld-particle systemet
         UpdateHealthbarAndEnemy();
     }
 
@@ -44,6 +48,7 @@ public class ButtonScript : MonoBehaviour
             return;
         }
         enemyS.health += healAmount; // Ökar fiendens health
+        waterParticles.GetComponent<ParticleSystem>().Play();
         UpdateHealthbarAndEnemy();
     }
 
