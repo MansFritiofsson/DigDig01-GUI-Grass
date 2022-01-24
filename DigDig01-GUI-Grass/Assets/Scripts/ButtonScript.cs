@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class ButtonScript : MonoBehaviour
+public class ButtonScript : MonoBehaviour // Script som hanterar det mesta i spelet; när en knapp trycks så körs den tillhörande metoden i detta script som ökar/minskar HP, uppdaterar healthbaren, laddar om scenen osv.
 {
 
     public float damageAmount = 10f; // Hur mycket skada som DMG-knappen ska ge
@@ -64,7 +64,7 @@ public class ButtonScript : MonoBehaviour
         slider.maxValue = enemyS.maxHealth; // Sätter sliderns värde till att representera fiendens HP
         slider.value = enemyS.health;
 
-        Image enemyImage = enemy.GetComponent<Image>();
+        Image enemyImage = enemy.GetComponent<Image>(); // Hämtar komponenten i enemyn som innehåller dess sprite
 
         if (enemyS.health <= 0) // Ifall fienden är död
         {
